@@ -89,6 +89,12 @@ or a variation like:
  "blue cyan", "magic yellow sunpower"]
 ```
 
+```
+Colour("red").equals(Colour("super red")) // true
+Colour("super red").equals(Colour("red")) // true
+Colour("red").equals(Colour("super blue")) // false
+```
+
 `"green"` [is not a creative colour](https://www.youtube.com/watch?v=9C_HReR_McQ)
 
 ---
@@ -125,7 +131,7 @@ assert(Colour("red")
 ```
 // FSet :: a -> FSet a
 const FSet = (a) => ({
-  __value: [...new Set(a)].sort(),
+  __value: a,
   // concat :: FSet -> FSet -> FSet
   concat: (b) => FSet(a.concat(b.__value))
 })
@@ -145,7 +151,7 @@ a.concat(b).concat(c) === a.concat(b.concat(c)) (associativity)
 ```
 assert.deepEqual(
   FSet([1,2]).concat(FSet([3])).concat(FSet([4])).__value,
-  FSet([1,2]).concat(FSet([4])).concat(FSet([3])).__value)
+  FSet([1,2]).concat(FSet([3]).concat(FSet([4]))).__value)
 ```
 
 ---
@@ -160,7 +166,7 @@ assert.deepEqual(
 ```
 // FSet :: a -> FSet a
 const FSet = (a) => ({
-  __value: [...new Set(a)].sort(),
+  __value: a,
   // concat :: FSet -> FSet -> FSet
   concat: (b) => FSet(a.concat(b.__value))
 })
@@ -180,20 +186,26 @@ assert.deepEqual(
 ## Monoid laws
 
 
-m.concat(M.empty()) is equivalent to m (right identity)
-M.empty().concat(m) is equivalent to m (left identity)
+m.concat(M.empty()) === m (right identity)
+M.empty().concat(m) === m (left identity)
 
 ```
 assert.deepEqual(
-  FSet([1,2]).concat(FSet([])).__value,
-  FSet([]).concat(FSet([1,2])).__value)
+  FSet([1,2]).concat(FSet.empty()).__value,
+  FSet.empty().concat(FSet([1,2])).__value)
 ```
 
 ---
 
 
 # Exercise time
-Define a DotString Monoid which always add a dot every time we're concatenating something
+Define a DotString Monoid which always add a dot between 2 strings every time we're concatenating them
+
+```
+DotString("lol").concat(DotString("asd")) // lol.asd
+DotString("lol").concat(DotString.empty()) // lol
+DotString.empty().concat(DotString("asd")) // asd
+```
 
 ---
 
@@ -258,8 +270,8 @@ assert(
 
 ## Functor laws
 
-u.map(a => a) is equivalent to u (identity)
-u.map(x => f(g(x))) is equivalent to u.map(g).map(f) (composition)
+u.map(a => a) === u (identity)
+u.map(x => f(g(x))) === u.map(g).map(f) (composition)
 
 ```
 assert(
