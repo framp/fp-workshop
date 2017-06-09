@@ -510,8 +510,8 @@ const Container = (a) => ({
   map: (fn) => Container(fn(a)),
   // ap :: Container a -> Container (a -> b) -> Container b
   ap: (fnAp) => Container(fnAp.__value(a)),
-  // chain :: Container a -> (a -> Chain b) -> Chain b
-  chain: (fnCh) => fnCh(a)
+  // chain :: Container a -> (a -> Container b) -> Container b
+  chain: (fnCh) => fnCh(a)  //equivalent to map(fnCh).__value
 })
 Container.of = (a) => Container(a)
 ```
@@ -664,7 +664,7 @@ findByName('Pai Mei', phoneBook)
 Promise.resolve(1).then(a => a+1) // 2
 Promise.resolve(1).then(a => Promise.resolve(a+1)) // 2
 ```
-They're behave differently, `chain` and `map` are 
+They're behave differently, `then` behave like `chain` and `map`
 
 ---
 
