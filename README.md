@@ -12,14 +12,26 @@
    - composition
 
  - Second workshop
-   - algebraic data structures
-   - ...
+   - Setoid
+   - Semigroup
+   - Monoid
+   - Functor
+   - Applicative
+   - Monad
+   
  - Third workshop   
    - monadic streams with most.js
    - ...
 
 ## What happens
 
+Rules V1:
  - Every workshop have a small introduction on the subjects (slides in this repo, recorded for remote use).
  - After the intro students pair up and work on the exercise while coaches float around and help.
  - At the end of the session a solution is published in this repo.
+ 
+Rules V2:
+ - Every workshop alternate short explanations with short exercises (slides in this repo, recorded for remote use).
+ - The students pair up and work on the exercises while coaches float around and help.
+ - At the end of the workshop a home exercise is given.
+ - After enough time to solve the exercise has passed the solution is published in this repo.
