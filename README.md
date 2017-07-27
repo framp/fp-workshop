@@ -20,7 +20,9 @@
    - Monad
    
  - Third workshop   
-   - monadic streams with most.js
+   - Functional Reactive Programming
+   - Behavior
+   - Events
    - ...
 
 ## What happens
