@@ -106,7 +106,7 @@ assert.equal(newPeople.MiaWallace, 35)
 # is add10 pure?
 
 ```
-const add5 = (a) => a+5
+let add5 = (a) => a+5
 const add10 = (a) => add5(a)+5
 ```
 
