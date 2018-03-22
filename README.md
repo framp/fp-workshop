@@ -19,11 +19,6 @@
    - Applicative
    - Monad
    
- - Third workshop   
-   - Functional Reactive Programming
-   - Behavior
-   - Events
-   - ...
 
 ## What happens
 
